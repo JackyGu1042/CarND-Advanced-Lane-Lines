@@ -123,7 +123,7 @@ right_curverad = ((1 + (2*right_fit[0]*y_eval*ym_per_pix + right_fit[1])**2)**1.
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  Here is an example of my result on a test image:
+Given src and dst points, calculate the perspective invert transform matrix,then create an image to draw the lines on. And folow 2nd order fit equation draw the lane onto the warped blank image.Then warp the blank back to original image space using inverse perspective matrix (Minv) and combine the result with the original image. Finally, add curverad value into result image.
 
 ![alt text][image6]
 ---
@@ -140,4 +140,8 @@ Here's a [link to my video result](./project_video_result.mp4)
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+* I use a lot of time to tunne the parameter of image process function but result is not very good, still cannot pass the challenge video. And later I want to try to combine HLS and gray Thresholds method, because in the videos there always has a yellow line and write line. I think HLS threshold is good at yellow line detection, and gray threshold is good at write line detection.
+
+* The function which fit positions with a polynomial is not good or efficient enough. Later I need improve it and try to use convolution method. 
+
+* In this submit, I don't realize vehicle position detection feature, I need implement it in next submit. 
