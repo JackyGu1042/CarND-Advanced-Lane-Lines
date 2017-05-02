@@ -120,6 +120,8 @@ xm_per_pix = 3.7/700 # meters per pixel in x dimension
 `left_curverad = ((1 + (2*left_fit[0]*y_eval*ym_per_pix + left_fit[1])**2)**1.5) / np.absolute(2*left_fit[0])
 right_curverad = ((1 + (2*right_fit[0]*y_eval*ym_per_pix + right_fit[1])**2)**1.5) / np.absolute(2*right_fit[0])
 `
+And I use center of detect line points as road's center, and use the center of screen as car's center. Then calculate the difference of these two values, we could get thevannotations of the vehicle position.
+`distance_center = ((leftx_current + rightx_current)/2 - 1280/2)*xm_per_pix`
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
