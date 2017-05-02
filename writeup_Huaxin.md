@@ -111,7 +111,7 @@ I use a warped test image as example to run this feature.
 ![alt text][image5]
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-I just follow the equation to calculate the curvature of each detected line:
+I just follow the equation to calculate the curvature of each detected line and the vehicle position:
 * Define conversions in x and y from pixels space to meters
 `ym_per_pix = 30/720 # meters per pixel in y dimension
 xm_per_pix = 3.7/700 # meters per pixel in x dimension
@@ -120,7 +120,8 @@ xm_per_pix = 3.7/700 # meters per pixel in x dimension
 `left_curverad = ((1 + (2*left_fit[0]*y_eval*ym_per_pix + left_fit[1])**2)**1.5) / np.absolute(2*left_fit[0])
 right_curverad = ((1 + (2*right_fit[0]*y_eval*ym_per_pix + right_fit[1])**2)**1.5) / np.absolute(2*right_fit[0])
 `
-And I use center of detect line points as road's center, and use the center of screen as car's center. Then calculate the difference of these two values, we could get thevannotations of the vehicle position.
+
+* Use center of detect line points as road's center, and use the center of screen as car's center. Then calculate the difference of these two values, finally it could get the annotations of the vehicle position.
 `distance_center = ((leftx_current + rightx_current)/2 - 1280/2)*xm_per_pix`
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
